@@ -1,4 +1,4 @@
-name: Continuously Deploy on Main Branch
+name: Continuously Deploy for Pull Requests
 
 on:
   pull_request:
