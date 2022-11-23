@@ -31,7 +31,7 @@ jobs:
 
       - name: 'Deploy'
         run: |
-          gcloud functions deploy ${SERVICE_NAME} --gen2 --region ${REGION}--runtime python310 --trigger-http --allow-unauthenticated --entry-point=greetings
+          gcloud functions deploy ${SERVICE_NAME} --gen2 --region ${REGION} --runtime python310 --trigger-http --allow-unauthenticated --entry-point=greetings
 
       - name: 'Get PREVIEW URL'
         run: |
