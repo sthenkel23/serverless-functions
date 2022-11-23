@@ -31,11 +31,11 @@ jobs:
 
       - id: 'deploy'
         run: |
-          gcloud functions deploy ${SERVICE_NAME} --gen2 --runtime python310 --trigger-http --region=${REGION} --allow-unauthenticated --entry-point=greetings
+          gcloud functions deploy ${SERVICE_NAME}  --runtime python310 --trigger-http --allow-unauthenticated --entry-point=greetings
 
       - name: 'Get PREVIEW URL'
         run: |
-          echo PREVIEW_URL=$(gcloud functions describe ${SERVICE_NAME} --gen2 --region=${REGION} --format="value(serviceConfig.uri)") >> $GITHUB_ENV
+          echo PREVIEW_URL=$(gcloud functions describe ${SERVICE_NAME}  --format="value(serviceConfig.uri)") >> $GITHUB_ENV
       
       - id: 'test'
         run: 'curl "${{ steps.deploy.outputs.url }}"'
