@@ -10,6 +10,7 @@ env:
   SERVICE_NAME: greetings-${{ github.event.number }}
   REGION: 'us-east1'
 
+
 jobs:
   cd:
     name: Deploy Main Branch
@@ -36,8 +37,8 @@ jobs:
         run: |
           echo PREVIEW_URL=$(gcloud functions describe ${SERVICE_NAME} --gen2 --region=${REGION} --format="value(serviceConfig.uri)") >> $GITHUB_ENV
       
-    - id: 'test'
-      run: 'curl "${{ steps.deploy.outputs.url }}"'
+      - id: 'test'
+        run: 'curl "${{ steps.deploy.outputs.url }}"'
 
 
       - uses: actions/github-script@v5
