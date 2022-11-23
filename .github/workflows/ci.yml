@@ -29,6 +29,6 @@ jobs:
 
       - name: 'Deploy Function'
         run: |
-          gcloud functions deploy $SERVICE-NAME --runtime python310 --trigger-http --allow-unauthenticated --entry-point=greetings
+          gcloud functions deploy ${SERVICE_NAME} --runtime python310 --trigger-http --allow-unauthenticated --entry-point=greetings
 
         
