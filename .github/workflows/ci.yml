@@ -37,8 +37,8 @@ jobs:
         run: |
           echo PREVIEW_URL=$(gcloud functions describe ${SERVICE_NAME} --gen2 --region ${REGION} --format="value(serviceConfig.uri)") >> $GITHUB_ENV
       
-      - id: 'test'
-        run: 'curl "$GITHUB_ENV"'
+      - name: 'test'
+        run: 'curl $GITHUB_ENV'
 
 
       - uses: actions/github-script@v5
