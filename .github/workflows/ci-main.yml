@@ -33,16 +33,4 @@ jobs:
 
       - name: 'Get PREVIEW URL'
         run: |
-          echo PREVIEW_URL=$(gcloud functions describe ${SERVICE_NAME} --gen2 --region ${REGION} --format="value(serviceConfig.uri)") >> $GITHUB_ENV
-
-
-      - uses: actions/github-script@v5
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview URL: ${process.env.PREVIEW_URL}`
-            })        
+          echo PRODUCTION_URL=$(gcloud functions describe ${SERVICE_NAME} --gen2 --region ${REGION} --format="value(serviceConfig.uri)") >> $GITHUB_ENV
