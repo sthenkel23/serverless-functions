@@ -35,11 +35,7 @@ jobs:
 
       - name: 'Get PREVIEW URL'
         run: |
-          echo PREVIEW_URL=$(gcloud functions describe ${SERVICE_NAME} --gen2 --region ${REGION} --format="value(serviceConfig.uri)") >> $GITHUB_ENV \
-          echo $GITHUB_ENV
-      
-      - name: 'test'
-        run: 'curl $GITHUB_ENV'
+          echo PREVIEW_URL=$(gcloud functions describe ${SERVICE_NAME} --gen2 --region ${REGION} --format="value(serviceConfig.uri)") >> $GITHUB_ENV
 
 
       - uses: actions/github-script@v5
